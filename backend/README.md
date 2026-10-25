@@ -19,6 +19,20 @@ Interactive docs: http://localhost:8000/docs
 
 Tables are created automatically on startup. The first `/evaluate` call downloads MiniLM (~90 MB) and DeBERTa NLI (~700 MB) from Hugging Face. Set `WARM_MODELS=true` to load them at startup instead.
 
+### OCR for scanned PDFs (optional)
+
+Pages where pdfplumber finds fewer than 50 characters (`OCR_MIN_CHARS`) are treated as images and read with Tesseract. This needs two programs besides the Python packages:
+
+| | Tesseract | Poppler (used by pdf2image) |
+|---|---|---|
+| Windows | Installer from https://github.com/UB-Mannheim/tesseract/wiki | Zip from https://github.com/oschwartz10612/poppler-windows/releases, unzip anywhere |
+| macOS | `brew install tesseract` | `brew install poppler` |
+| Debian/Ubuntu | `apt install tesseract-ocr` | `apt install poppler-utils` |
+
+If they aren't on PATH, set `TESSERACT_CMD` (full path to `tesseract.exe`) and `POPPLER_PATH` (the folder containing `pdftoppm.exe`, e.g. `C:/poppler/Library/bin`) in `.env`. Restart the server after installing.
+
+Without them, everything still works: image pages are skipped with one warning in the log per document, and a PDF that is only scans returns 422 with the reason. Other languages: install the Tesseract language pack and set e.g. `OCR_LANG=eng+deu`. OCR takes about 1 second per page and runs the first time a document is evaluated.
+
 ### Failure classifier
 
 Put your fine-tuned DistilBERT (the output of `model.save_pretrained()` + `tokenizer.save_pretrained()`) in `models/failure_classifier/`, so that `models/failure_classifier/config.json` exists.

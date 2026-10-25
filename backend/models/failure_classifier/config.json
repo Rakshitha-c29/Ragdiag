@@ -14,14 +14,16 @@
     "0": "bad_retrieval",
     "1": "hallucination_in_context",
     "2": "llm_ignored_context",
-    "3": "incomplete_answer"
+    "3": "incomplete_answer",
+    "4": "no_failure"
   },
   "initializer_range": 0.02,
   "label2id": {
     "bad_retrieval": 0,
     "hallucination_in_context": 1,
     "incomplete_answer": 3,
-    "llm_ignored_context": 2
+    "llm_ignored_context": 2,
+    "no_failure": 4
   },
   "max_position_embeddings": 512,
   "model_type": "distilbert",

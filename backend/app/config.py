@@ -37,6 +37,15 @@ class Settings(BaseSettings):
     )
     device: str = ""  # "", "cpu", "cuda" — empty means auto-detect
 
+    # OCR for image-based PDF pages (needs the Tesseract and Poppler programs installed)
+    ocr_enabled: bool = True
+    ocr_min_chars: int = 50  # pages with less text than this from pdfplumber get OCR
+    ocr_lang: str = "eng"  # Tesseract language(s), e.g. "eng+deu"
+    ocr_dpi: int = 300
+    ocr_timeout_s: int = 120  # per page
+    tesseract_cmd: str = ""  # full path to tesseract(.exe) if it isn't on PATH
+    poppler_path: str = ""  # folder containing pdftoppm(.exe) if it isn't on PATH
+
     # Pipeline defaults
     chunk_size: int = 800
     chunk_overlap: int = 120
