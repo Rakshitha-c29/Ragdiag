@@ -1,0 +1,24 @@
+# --- API ---
+fastapi>=0.115,<1.0
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+pydantic>=2.7,<3.0
+pydantic-settings>=2.3
+
+# --- Database ---
+sqlalchemy[asyncio]>=2.0.30
+asyncpg>=0.29
+
+# --- RAG pipeline ---
+pdfplumber>=0.11
+langchain-text-splitters>=0.2
+sentence-transformers>=3.0
+chromadb>=0.5
+groq>=0.9
+
+# --- Scoring / classification models ---
+torch>=2.2
+transformers>=5.0           # classifier was saved with transformers 5.x
+sentencepiece>=0.2      # needed by the DeBERTa-v3 tokenizer
+protobuf>=4.25
+numpy>=1.26

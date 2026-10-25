@@ -1,0 +1,21 @@
+# Secrets
+.env
+.env.local
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node / frontend build
+node_modules/
+dist/
+
+# Runtime data: uploaded PDFs and vector store
+data/
+chroma/
+
+# Model weights (too large for git; GitHub rejects files over 100 MB)
+**/models/**/*.safetensors
+**/models/**/*.zip
