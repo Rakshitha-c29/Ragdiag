@@ -58,6 +58,7 @@ FAILURE_LABELS = {
     1: "hallucination_in_context",
     2: "llm_ignored_context",
     3: "incomplete_answer",
+    4: "no_failure",
 }
 
 
